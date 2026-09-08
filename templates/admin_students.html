@@ -1,0 +1,385 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin - Students</title>
+
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f8;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .header {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+        }
+
+
+        .header a {
+
+            color: white;
+
+            text-decoration: none;
+
+            background: #e53935;
+
+            padding: 8px 14px;
+
+            border-radius: 6px;
+
+        }
+
+
+        /* =================================================
+           CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: 30px auto;
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+        }
+
+
+        /* =================================================
+           TITLE
+        ================================================= */
+
+        h2 {
+
+            margin-top: 0;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           TABLE
+        ================================================= */
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 20px;
+
+        }
+
+
+        th {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 12px;
+
+            text-align: left;
+
+        }
+
+
+        td {
+
+            padding: 12px;
+
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+        tr:hover {
+
+            background: #f5f5f5;
+
+        }
+
+
+        /* =================================================
+           VIEW BUTTON
+        ================================================= */
+
+        .view-button {
+
+            background: #388e3c;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 8px 14px;
+
+            border-radius: 6px;
+
+            font-size: 14px;
+
+            display: inline-block;
+
+        }
+
+
+        .view-button:hover {
+
+            background: #1b5e20;
+
+        }
+
+
+        /* =================================================
+           BACK BUTTON
+        ================================================= */
+
+        .back-button {
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+            background: #555;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 9px 16px;
+
+            border-radius: 6px;
+
+        }
+
+
+        .back-button:hover {
+
+            background: #333;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+    ================================================= -->
+
+    <div class="header">
+
+        <h1>
+            👥 Student Management
+        </h1>
+
+        <div>
+
+            Welcome,
+            {{ admin_name }}
+
+            &nbsp;&nbsp;
+
+            <a href="/admin/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTAINER
+    ================================================= -->
+
+    <div class="container">
+
+        <h2>
+            👨‍🎓 All Students
+        </h2>
+
+
+        {% if students %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Email
+                    </th>
+
+                    <th>
+                        Assessments
+                    </th>
+
+                    <th>
+                        Latest Match
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for student in students %}
+
+                <tr>
+
+                    <td>
+                        {{ student.id }}
+                    </td>
+
+                    <td>
+                        {{ student.name }}
+                    </td>
+
+                    <td>
+                        {{ student.email }}
+                    </td>
+
+                    <td>
+                        {{ student.assessment_count }}
+                    </td>
+
+                    <td>
+
+                        {% if student.latest_match is not none %}
+
+                            {{ student.latest_match }}%
+
+                        {% else %}
+
+                            No assessment
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- =================================================
+                         ACTIONS
+                    ================================================= -->
+
+                    <td>
+
+                        <a
+                            href="/admin/students/{{ student.id }}"
+                            class="view-button"
+                        >
+                            👁️ View Details
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+        {% else %}
+
+            <p>
+                No students registered yet.
+            </p>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             BACK TO DASHBOARD
+        ================================================= -->
+
+        <a
+            href="/admin"
+            class="back-button"
+        >
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+
+</body>
+
+</html>
+```

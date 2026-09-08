@@ -1,0 +1,611 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Details</title>
+
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f8;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .header {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+        }
+
+
+        .logout-button {
+
+            background: #e53935;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 8px 14px;
+
+            border-radius: 6px;
+
+        }
+
+
+        /* =================================================
+           CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: 30px auto;
+
+        }
+
+
+        /* =================================================
+           CARD
+        ================================================= */
+
+        .card {
+
+            background: white;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.1);
+
+        }
+
+
+        .card h2 {
+
+            color: #333;
+
+            margin-top: 0;
+
+        }
+
+
+        /* =================================================
+           STUDENT INFORMATION
+        ================================================= */
+
+        .student-info {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .info-box {
+
+            background: #f5f7fa;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+        }
+
+
+        .info-box strong {
+
+            display: block;
+
+            color: #555;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        /* =================================================
+           TABLE
+        ================================================= */
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 15px;
+
+        }
+
+
+        th {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 12px;
+
+            text-align: left;
+
+        }
+
+
+        td {
+
+            padding: 12px;
+
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+        tr:hover {
+
+            background: #f5f5f5;
+
+        }
+
+
+        /* =================================================
+           SKILL LEVEL
+        ================================================= */
+
+        .level {
+
+            padding: 5px 10px;
+
+            border-radius: 5px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+        }
+
+
+        .beginner {
+
+            background: #fff3cd;
+
+            color: #856404;
+
+        }
+
+
+        .intermediate {
+
+            background: #cfe2ff;
+
+            color: #084298;
+
+        }
+
+
+        .advanced {
+
+            background: #d1e7dd;
+
+            color: #0f5132;
+
+        }
+
+
+        /* =================================================
+           MATCH PERCENTAGE
+        ================================================= */
+
+        .match {
+
+            font-weight: bold;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =================================================
+           BACK BUTTON
+        ================================================= */
+
+        .back-button {
+
+            display: inline-block;
+
+            background: #555;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 10px 16px;
+
+            border-radius: 6px;
+
+        }
+
+
+        .back-button:hover {
+
+            background: #333;
+
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+            .student-info {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            table {
+
+                font-size: 13px;
+
+            }
+
+            th,
+            td {
+
+                padding: 8px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+    ================================================= -->
+
+    <div class="header">
+
+        <h1>
+            👨‍🎓 Student Details
+        </h1>
+
+        <div>
+
+            Welcome,
+            {{ admin_name }}
+
+            &nbsp;&nbsp;
+
+            <a
+                href="/admin/logout"
+                class="logout-button"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTAINER
+    ================================================= -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             STUDENT INFORMATION
+        ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                👤 Student Information
+            </h2>
+
+
+            <div class="student-info">
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Student ID
+                    </strong>
+
+                    {{ student.id }}
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Name
+                    </strong>
+
+                    {{ student.name }}
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Email
+                    </strong>
+
+                    {{ student.email }}
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             STUDENT SKILLS
+        ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                🛠️ Student Skills
+            </h2>
+
+
+            {% if student_skills %}
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Skill Name
+                        </th>
+
+                        <th>
+                            Proficiency
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for skill in student_skills %}
+
+                    <tr>
+
+                        <td>
+                            {{ skill.skill_name }}
+                        </td>
+
+
+                        <td>
+
+                            {% if skill.proficiency == "Beginner" %}
+
+                                <span class="level beginner">
+                                    Beginner
+                                </span>
+
+                            {% elif skill.proficiency == "Intermediate" %}
+
+                                <span class="level intermediate">
+                                    Intermediate
+                                </span>
+
+                            {% elif skill.proficiency == "Advanced" %}
+
+                                <span class="level advanced">
+                                    Advanced
+                                </span>
+
+                            {% else %}
+
+                                {{ skill.proficiency }}
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+
+            {% else %}
+
+                <p>
+                    This student has not completed
+                    the skill assessment yet.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- =================================================
+             ASSESSMENT HISTORY
+        ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                📊 Assessment History
+            </h2>
+
+
+            {% if assessments %}
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Assessment ID
+                        </th>
+
+                        <th>
+                            Career
+                        </th>
+
+                        <th>
+                            Match Percentage
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for assessment in assessments %}
+
+                    <tr>
+
+                        <td>
+                            {{ assessment.id }}
+                        </td>
+
+
+                        <td>
+                            {{ assessment.career_name }}
+                        </td>
+
+
+                        <td>
+
+                            <span class="match">
+
+                                {{ assessment.match_percentage }}%
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            {{ assessment.assessment_date }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+
+            {% else %}
+
+                <p>
+                    No assessment history available.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- =================================================
+             BACK TO STUDENTS
+        ================================================= -->
+
+        <a
+            href="/admin/students"
+            class="back-button"
+        >
+            ← Back to Students
+        </a>
+
+
+    </div>
+
+</body>
+
+</html>
+```

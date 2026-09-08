@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Assessment</title>
+
+    <style>
+
+        /* =================================================
+           GENERAL
+        ================================================= */
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f8;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .navbar {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 18px 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .navbar h2 {
+
+            margin: 0;
+
+        }
+
+
+        .back-button {
+
+            background: white;
+
+            color: #1976d2;
+
+            text-decoration: none;
+
+            padding: 9px 16px;
+
+            border-radius: 6px;
+
+        }
+
+
+        .back-button:hover {
+
+            background: #e3f2fd;
+
+        }
+
+
+        /* =================================================
+           CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 900px;
+
+            margin: 30px auto;
+
+        }
+
+
+        /* =================================================
+           INTRODUCTION
+        ================================================= */
+
+        .intro {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .intro h1 {
+
+            margin-top: 0;
+
+            color: #1976d2;
+
+        }
+
+
+        /* =================================================
+           SKILL CARD
+        ================================================= */
+
+        .skill-card {
+
+            background: white;
+
+            padding: 20px;
+
+            margin-bottom: 15px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+        }
+
+
+        .skill-card h3 {
+
+            margin-top: 0;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           OPTIONS
+        ================================================= */
+
+        .options {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .options label {
+
+            background: #f1f3f4;
+
+            padding: 10px 16px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            border: 1px solid #ddd;
+
+        }
+
+
+        .options label:hover {
+
+            background: #e3f2fd;
+
+        }
+
+
+        .options input {
+
+            margin-right: 6px;
+
+        }
+
+
+        /* =================================================
+           SUBMIT BUTTON
+        ================================================= */
+
+        .submit-container {
+
+            text-align: center;
+
+            margin: 30px 0;
+
+        }
+
+
+        .submit-button {
+
+            background: #43a047;
+
+            color: white;
+
+            border: none;
+
+            padding: 14px 30px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+        }
+
+
+        .submit-button:hover {
+
+            background: #2e7d32;
+
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 15px;
+
+            }
+
+
+            .navbar h2 {
+
+                font-size: 18px;
+
+            }
+
+
+            .container {
+
+                width: 94%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================= -->
+
+    <div class="navbar">
+
+        <h2>
+            🎓 Campus Skill Gap Analyzer
+        </h2>
+
+
+        <a
+            href="/dashboard"
+            class="back-button"
+        >
+            ← Dashboard
+        </a>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTAINER
+    ================================================= -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             INTRODUCTION
+        ================================================= -->
+
+        <div class="intro">
+
+            <h1>
+                📝 Skill Assessment
+            </h1>
+
+            <p>
+                Select your current proficiency level
+                for each skill.
+            </p>
+
+            <p>
+                Choose the option that best represents
+                your current knowledge.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             ASSESSMENT FORM
+        ================================================= -->
+
+        <form
+            action="/assessment"
+            method="POST"
+        >
+
+
+            <!-- =================================================
+                 PYTHON
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    1. Python
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="python"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="python"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="python"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 JAVA
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    2. Java
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="java"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="java"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="java"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 C++
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    3. C++
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="cpp"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="cpp"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="cpp"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 DSA
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    4. DSA
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="dsa"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="dsa"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="dsa"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 HTML
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    5. HTML
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="html"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="html"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="html"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CSS
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    6. CSS
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="css"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="css"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="css"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 JAVASCRIPT
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    7. JavaScript
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="javascript"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="javascript"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="javascript"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 REACT
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    8. React
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="react"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="react"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="react"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SQL
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    9. SQL
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="sql"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="sql"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="sql"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MONGODB
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    10. MongoDB
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="mongodb"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="mongodb"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="mongodb"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EXCEL
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    11. Excel
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="excel"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="excel"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="excel"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 POWER BI
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    12. Power BI
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="powerbi"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="powerbi"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="powerbi"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 STATISTICS
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    13. Statistics
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="statistics"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="statistics"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="statistics"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PANDAS
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    14. Pandas
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="pandas"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="pandas"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="pandas"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MACHINE LEARNING
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    15. Machine Learning
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="machine_learning"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="machine_learning"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="machine_learning"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 GIT & GITHUB
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    16. Git & GitHub
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="git"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="git"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="git"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 OOP
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    17. OOP
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="oop"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="oop"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="oop"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 DBMS
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    18. DBMS
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="dbms"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="dbms"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="dbms"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 OPERATING SYSTEMS
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    19. Operating Systems
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="os"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="os"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="os"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 COMPUTER NETWORKS
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h3>
+                    20. Computer Networks
+                </h3>
+
+                <div class="options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="networks"
+                            value="Beginner"
+                        >
+                        Beginner
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="networks"
+                            value="Intermediate"
+                        >
+                        Intermediate
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="networks"
+                            value="Advanced"
+                        >
+                        Advanced
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SUBMIT
+            ================================================= -->
+
+            <div class="submit-container">
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    ✅ Submit Assessment
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+</body>
+
+</html>

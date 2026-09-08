@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin - Careers</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+        }
+
+
+        /* =================================================
+           NAVIGATION BAR
+        ================================================= */
+
+        .navbar {
+
+            background: #1e3a8a;
+
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .navbar h1 {
+
+            margin: 0;
+
+            font-size: 24px;
+        }
+
+
+        .navbar a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .navbar a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =================================================
+           MAIN CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1000px;
+
+            margin: 40px auto;
+        }
+
+
+        /* =================================================
+           CARD
+        ================================================= */
+
+        .card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+            color: #1e3a8a;
+
+            margin-bottom: 10px;
+        }
+
+
+        .description {
+
+            color: #666;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =================================================
+           BUTTONS
+        ================================================= */
+
+        .button {
+
+            display: inline-block;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+        }
+
+
+        .button:hover {
+
+            background: #1d4ed8;
+        }
+
+
+        .back-button {
+
+            background: #6b7280;
+
+            margin-left: 10px;
+        }
+
+
+        .back-button:hover {
+
+            background: #4b5563;
+        }
+
+
+        /* =================================================
+           CAREER LIST
+        ================================================= */
+
+        .career-list {
+
+            margin-top: 10px;
+        }
+
+
+        .career-item {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            padding: 18px 20px;
+
+            border-radius: 10px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .career-name {
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            color: #1e3a8a;
+        }
+
+
+        .view-button {
+
+            background: #16a34a;
+
+            color: white;
+
+            padding: 9px 15px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .view-button:hover {
+
+            background: #15803d;
+        }
+
+
+        /* =================================================
+           EMPTY MESSAGE
+        ================================================= */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #777;
+
+            background: #f8fafc;
+
+            border-radius: 10px;
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 15px 20px;
+
+                flex-direction: column;
+
+                gap: 10px;
+
+                text-align: center;
+            }
+
+
+            .navbar a {
+
+                margin-left: 10px;
+
+                margin-right: 10px;
+            }
+
+
+            .career-item {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVIGATION BAR
+    ================================================= -->
+
+    <div class="navbar">
+
+        <h1>⚙️ Admin Panel</h1>
+
+
+        <div>
+
+            <span>
+                Welcome, {{ admin_name }}
+            </span>
+
+
+            <a href="/admin">
+                Dashboard
+            </a>
+
+
+            <a href="/admin/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================= -->
+
+    <div class="container">
+
+
+        <div class="card">
+
+
+            <!-- =================================================
+                 CAREERS HEADING
+            ================================================= -->
+
+            <h2>💼 Careers</h2>
+
+
+            <p class="description">
+
+                Manage the careers available in the
+                Campus Skill Gap Analyzer.
+
+            </p>
+
+
+            <!-- =================================================
+                 ADD CAREER BUTTON
+            ================================================= -->
+
+            <a href="/admin/careers/add" class="button">
+
+                ➕ Add New Career
+
+            </a>
+
+
+            <!-- =================================================
+                 CAREER LIST
+            ================================================= -->
+
+            <div class="career-list">
+
+
+                {% if careers %}
+
+
+                    {% for career in careers %}
+
+
+                        <div class="career-item">
+
+
+                            <div class="career-name">
+
+                                💼 {{ career.career_name }}
+
+                            </div>
+
+
+                            <a
+                                href="/admin/careers/{{ career.id }}"
+                                class="view-button"
+                            >
+
+                                👁️ View Required Skills
+
+                            </a>
+
+
+                        </div>
+
+
+                    {% endfor %}
+
+
+                {% else %}
+
+
+                    <div class="empty">
+
+                        <h3>
+                            No careers available
+                        </h3>
+
+                        <p>
+                            Add your first career using
+                            the button above.
+                        </p>
+
+                    </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+            <!-- =================================================
+                 BACK TO ADMIN DASHBOARD
+            ================================================= -->
+
+            <a
+                href="/admin"
+                class="button back-button"
+            >
+
+                ← Back to Dashboard
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Required Skill</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+        }
+
+
+        .navbar {
+
+            background: #1e3a8a;
+
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .navbar h1 {
+
+            margin: 0;
+        }
+
+
+        .navbar a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 700px;
+
+            margin: 50px auto;
+        }
+
+
+        .card {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        h2 {
+
+            color: #1e3a8a;
+
+            margin-top: 0;
+        }
+
+
+        .career-name {
+
+            background: #eff6ff;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            margin-bottom: 25px;
+
+            font-weight: bold;
+
+            color: #1e40af;
+        }
+
+
+        label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        select {
+
+            width: 100%;
+
+            padding: 13px;
+
+            margin-bottom: 22px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            background: white;
+        }
+
+
+        select:focus {
+
+            outline: none;
+
+            border-color: #2563eb;
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            background: #2563eb;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .button:hover {
+
+            background: #1d4ed8;
+        }
+
+
+        .back-button {
+
+            background: #6b7280;
+
+            margin-left: 10px;
+        }
+
+
+        .back-button:hover {
+
+            background: #4b5563;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
+
+    <div class="navbar">
+
+        <h1>⚙️ Admin Panel</h1>
+
+
+        <div>
+
+            <span>
+                Welcome, {{ admin_name }}
+            </span>
+
+
+            <a href="/admin">
+                Dashboard
+            </a>
+
+
+            <a href="/admin/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>
+                ➕ Add Required Skill
+            </h2>
+
+
+            <div class="career-name">
+
+                💼 Career:
+
+                {{ career.career_name }}
+
+            </div>
+
+
+            <!-- =================================================
+                 ADD SKILL FORM
+            ================================================== -->
+
+            <form
+                method="POST"
+                action="/admin/careers/{{ career.id }}/add-skill"
+            >
+
+
+                <label for="skill_id">
+                    Select Skill
+                </label>
+
+
+                <select
+                    id="skill_id"
+                    name="skill_id"
+                    required
+                >
+
+                    <option value="">
+                        -- Select Skill --
+                    </option>
+
+
+                    {% for skill in skills %}
+
+                        <option value="{{ skill.id }}">
+
+                            {{ skill.skill_name }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <label for="required_level">
+                    Required Level
+                </label>
+
+
+                <select
+                    id="required_level"
+                    name="required_level"
+                    required
+                >
+
+                    <option value="">
+                        -- Select Level --
+                    </option>
+
+                    <option value="Beginner">
+                        Beginner
+                    </option>
+
+                    <option value="Intermediate">
+                        Intermediate
+                    </option>
+
+                    <option value="Advanced">
+                        Advanced
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="button"
+                >
+
+                    ➕ Add Skill
+
+                </button>
+
+
+                <a
+                    href="/admin/careers/{{ career.id }}"
+                    class="button back-button"
+                >
+
+                    ← Back
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

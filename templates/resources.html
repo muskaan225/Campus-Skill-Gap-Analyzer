@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Resources</title>
+
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .navbar {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .navbar h2 {
+
+            margin: 0;
+
+        }
+
+
+        .navbar a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 20px;
+
+            font-size: 15px;
+
+        }
+
+
+        .navbar a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =================================================
+           MAIN CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: 40px auto;
+
+        }
+
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .header {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .header h1 {
+
+            color: #1976d2;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .header p {
+
+            color: #666;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =================================================
+           RESOURCE GRID
+        ================================================= */
+
+        .resource-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        /* =================================================
+           RESOURCE CARD
+        ================================================= */
+
+        .resource-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .resource-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 7px 20px rgba(0, 0, 0, 0.12);
+
+        }
+
+
+        .resource-card h2 {
+
+            color: #1976d2;
+
+            margin-top: 0;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        /* =================================================
+           TOPICS
+        ================================================= */
+
+        .resource-card h3 {
+
+            margin-bottom: 10px;
+
+            color: #444;
+
+        }
+
+
+        .topic-list {
+
+            padding-left: 20px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .topic-list li {
+
+            margin-bottom: 3px;
+
+        }
+
+
+        /* =================================================
+           PROJECT BOX
+        ================================================= */
+
+        .project-box {
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            background: #e3f2fd;
+
+            border-left:
+                5px solid #1976d2;
+
+            border-radius: 6px;
+
+        }
+
+
+        .project-box strong {
+
+            color: #0d47a1;
+
+        }
+
+
+        /* =================================================
+           ACTION BUTTONS
+        ================================================= */
+
+        .buttons {
+
+            text-align: center;
+
+            margin-top: 35px;
+
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            margin: 5px;
+
+            background: #1976d2;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+        }
+
+
+        .button:hover {
+
+            background: #0d47a1;
+
+        }
+
+
+        .secondary-button {
+
+            background: #455a64;
+
+        }
+
+
+        .secondary-button:hover {
+
+            background: #263238;
+
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                flex-direction: column;
+
+                gap: 10px;
+
+                padding: 15px 20px;
+
+            }
+
+
+            .navbar a {
+
+                margin-left: 8px;
+
+                margin-right: 8px;
+
+            }
+
+
+            .resource-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================= -->
+
+    <div class="navbar">
+
+        <h2>
+            🎓 Skill Gap Analyzer
+        </h2>
+
+
+        <div>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/assessment">
+                Assessment
+            </a>
+
+            <a href="/career">
+                Careers
+            </a>
+
+            <a href="/recommendations">
+                Recommendations
+            </a>
+
+            <a href="/resources">
+                Resources
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================= -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================= -->
+
+        <div class="header">
+
+            <h1>
+                📚 Learning Resources
+            </h1>
+
+
+            <p>
+
+                Improve your technical skills by
+                following these topics and projects.
+
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             RESOURCE CARDS
+        ================================================= -->
+
+        <div class="resource-grid">
+
+
+            {% for skill, data in resources.items() %}
+
+
+                <div class="resource-card">
+
+
+                    <!-- SKILL NAME -->
+
+                    <h2>
+
+                        💻 {{ skill }}
+
+                    </h2>
+
+
+                    <!-- TOPICS -->
+
+                    <h3>
+                        📖 Topics to Learn
+                    </h3>
+
+
+                    <ul class="topic-list">
+
+                        {% for topic in data.topics %}
+
+                            <li>
+
+                                {{ topic }}
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+
+                    <!-- PROJECT -->
+
+                    <div class="project-box">
+
+                        <strong>
+                            💡 Suggested Project:
+                        </strong>
+
+                        <br>
+
+                        {{ data.project }}
+
+                    </div>
+
+
+                </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+        ================================================= -->
+
+        <div class="buttons">
+
+            <a
+                href="/dashboard"
+                class="button"
+            >
+
+                📊 Dashboard
+
+            </a>
+
+
+            <a
+                href="/assessment"
+                class="button"
+            >
+
+                📝 Update Skills
+
+            </a>
+
+
+            <a
+                href="/recommendations"
+                class="button secondary-button"
+            >
+
+                🎯 Career Recommendations
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

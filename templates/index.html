@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Campus Skill Gap Analyzer</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f5f7fb;
+        color: #222;
+    }
+
+    header {
+        background-color: #172554;
+        color: white;
+        padding: 20px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 25px;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    .hero {
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 70px 10%;
+        background: white;
+    }
+
+    .hero-text {
+        width: 55%;
+    }
+
+    .hero-text h1 {
+        font-size: 48px;
+        color: #172554;
+        margin-bottom: 20px;
+    }
+
+    .hero-text p {
+        font-size: 19px;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 14px 28px;
+        background-color: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+
+    .button:hover {
+        background-color: #1d4ed8;
+    }
+
+    .hero-card {
+        width: 330px;
+        padding: 30px;
+        background-color: #eef4ff;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .hero-card h2 {
+        color: #172554;
+        margin-bottom: 20px;
+    }
+
+    .skill {
+        margin: 15px 0;
+    }
+
+    .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    .progress {
+        height: 10px;
+        background-color: #ddd;
+        border-radius: 10px;
+    }
+
+    .progress-bar {
+        height: 10px;
+        background-color: #2563eb;
+        border-radius: 10px;
+    }
+
+    .features {
+        padding: 60px 10%;
+        text-align: center;
+    }
+
+    .features h2 {
+        font-size: 32px;
+        color: #172554;
+        margin-bottom: 40px;
+    }
+
+    .feature-container {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+    }
+
+    .feature {
+        background: white;
+        padding: 30px;
+        width: 30%;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .feature h3 {
+        margin-bottom: 15px;
+        color: #2563eb;
+    }
+
+    .feature p {
+        color: #666;
+        line-height: 1.5;
+    }
+
+    footer {
+        background-color: #172554;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    @media (max-width: 800px) {
+
+        .hero {
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .hero-text {
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+        }
+
+        .hero-card {
+            width: 100%;
+        }
+
+        .feature-container {
+            flex-direction: column;
+        }
+
+        .feature {
+            width: 100%;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<header>
+
+    <div class="logo">
+        SkillGap Analyzer
+    </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/admin/login">Admin Login</a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Discover Your Skill Gap.
+            Build Your Future.
+        </h1>
+
+        <p>
+            Campus Skill Gap Analyzer helps students compare
+            their current skills with the skills required for
+            their desired career and provides personalized
+            recommendations to improve their employability.
+        </p>
+
+        <a href="/assessment" class="button">
+            Start Skill Assessment
+        </a>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <h2>Your Skill Profile</h2>
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>Python</span>
+                <span>85%</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" style="width: 85%;"></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>SQL</span>
+                <span>70%</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" style="width: 70%;"></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>JavaScript</span>
+                <span>45%</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" style="width: 45%;"></div>
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-name">
+                <span>React</span>
+                <span>30%</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" style="width: 30%;"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <h2>How It Works</h2>
+
+    <div class="feature-container">
+
+        <div class="feature">
+
+            <h3>1. Assess Skills</h3>
+
+            <p>
+                Enter your technical and professional
+                skills along with your proficiency level.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>2. Analyze Gap</h3>
+
+            <p>
+                Compare your current skills with the
+                requirements of your selected career role.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>3. Improve Skills</h3>
+
+            <p>
+                Get personalized recommendations and
+                a learning roadmap for your career.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        © 2026 Campus Skill Gap Analyzer
+    </p>
+
+</footer>
+```
+
+</body>
+</html>

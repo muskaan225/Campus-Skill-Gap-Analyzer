@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Career Skill Gap Analyzer</title>
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .navbar {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .navbar h2 {
+
+            margin: 0;
+
+        }
+
+
+        .navbar a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 20px;
+
+            font-size: 15px;
+
+        }
+
+
+        .navbar a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =================================================
+           MAIN CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 700px;
+
+            margin: 50px auto;
+
+        }
+
+
+        /* =================================================
+           CARD
+        ================================================= */
+
+        .card {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.10);
+
+        }
+
+
+        .card h1 {
+
+            margin-top: 0;
+
+            color: #1976d2;
+
+        }
+
+
+        .card p {
+
+            color: #666;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =================================================
+           FORM
+        ================================================= */
+
+        label {
+
+            display: block;
+
+            margin-top: 25px;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+        }
+
+
+        select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            font-size: 16px;
+
+            background: white;
+
+        }
+
+
+        select:focus {
+
+            outline: none;
+
+            border-color: #1976d2;
+
+        }
+
+
+        /* =================================================
+           BUTTON
+        ================================================= */
+
+        .button {
+
+            margin-top: 25px;
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: #1976d2;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+        }
+
+
+        .button:hover {
+
+            background: #0d47a1;
+
+        }
+
+
+        /* =================================================
+           INFORMATION BOX
+        ================================================= */
+
+        .info-box {
+
+            margin-top: 25px;
+
+            padding: 15px;
+
+            background: #e3f2fd;
+
+            border-left: 5px solid #1976d2;
+
+            border-radius: 5px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 15px 20px;
+
+            }
+
+
+            .navbar a {
+
+                margin-left: 10px;
+
+            }
+
+
+            .container {
+
+                width: 92%;
+
+                margin: 30px auto;
+
+            }
+
+
+            .card {
+
+                padding: 25px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================= -->
+
+    <div class="navbar">
+
+        <h2>🎓 Skill Gap Analyzer</h2>
+
+        <div>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/assessment">
+                Assessment
+            </a>
+
+            <a href="/recommendations">
+                Recommendations
+            </a>
+
+            <a href="/resources">
+                Resources
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================= -->
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>
+                🎯 Career Skill Gap Analysis
+            </h1>
+
+
+            <p>
+
+                Select the career you are interested in.
+
+                We will compare your current skills
+                with the skills required for that career.
+
+            </p>
+
+
+            <!-- =================================================
+                 INFORMATION
+            ================================================= -->
+
+            <div class="info-box">
+
+                <strong>How it works:</strong>
+
+                <br>
+
+                1️⃣ Select your target career.
+
+                <br>
+
+                2️⃣ We compare your skills with the
+                required skills.
+
+                <br>
+
+                3️⃣ You will see your matched skills
+                and skill gaps.
+
+                <br>
+
+                4️⃣ Your overall career match percentage
+                will be calculated.
+
+            </div>
+
+
+            <!-- =================================================
+                 CAREER FORM
+            ================================================= -->
+
+            <form
+                action="/career"
+                method="POST"
+            >
+
+                <label for="career">
+
+                    Select Your Career
+
+                </label>
+
+
+                <select
+                    name="career"
+                    id="career"
+                    required
+                >
+
+                    <option value="">
+
+                        -- Select Career --
+
+                    </option>
+
+
+                    {% for career in careers %}
+
+                        <option
+                            value="{{ career.id }}"
+                        >
+
+                            {{ career.career_name }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="button"
+                >
+
+                    🔍 Analyze Skill Gap
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

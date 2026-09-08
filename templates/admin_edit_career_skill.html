@@ -1,0 +1,353 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Required Skill</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .header {
+
+            background: linear-gradient(
+                135deg,
+                #4f46e5,
+                #7c3aed
+            );
+
+            color: white;
+
+            padding: 25px;
+
+            text-align: center;
+
+        }
+
+
+        .header h1 {
+
+            margin: 0;
+
+            font-size: 30px;
+
+        }
+
+
+        .header p {
+
+            margin-top: 8px;
+
+        }
+
+
+        /* =================================================
+           CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 600px;
+
+            margin: 50px auto;
+
+        }
+
+
+        /* =================================================
+           CARD
+        ================================================= */
+
+        .card {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        .card h2 {
+
+            color: #4f46e5;
+
+            margin-top: 0;
+
+        }
+
+
+        /* =================================================
+           FORM
+        ================================================= */
+
+        label {
+
+            display: block;
+
+            margin-top: 20px;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+        }
+
+
+        select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =================================================
+           BUTTON
+        ================================================= */
+
+        .button {
+
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            margin-top: 25px;
+
+            margin-right: 8px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .button:hover {
+
+            background: #3730a3;
+
+        }
+
+
+        .cancel {
+
+            background: #64748b;
+
+        }
+
+
+        .cancel:hover {
+
+            background: #475569;
+
+        }
+
+
+        /* =================================================
+           INFO
+        ================================================= */
+
+        .info {
+
+            background: #eef2ff;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .info strong {
+
+            color: #4f46e5;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+    ================================================= -->
+
+    <div class="header">
+
+        <h1>
+            ⚙️ Admin Panel
+        </h1>
+
+        <p>
+            Welcome, {{ admin_name }}
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================= -->
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>
+                ✏️ Edit Required Skill
+            </h2>
+
+
+            <div class="info">
+
+                <p>
+                    <strong>Career:</strong>
+                    {{ career.career_name }}
+                </p>
+
+                <p>
+                    <strong>Skill:</strong>
+                    {{ career_skill.skill_name }}
+                </p>
+
+                <p>
+                    <strong>Current Level:</strong>
+                    {{ career_skill.required_level }}
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 EDIT FORM
+            ================================================= -->
+
+            <form method="POST">
+
+
+                <label for="required_level">
+
+                    Select New Required Level
+
+                </label>
+
+
+                <select
+                    name="required_level"
+                    id="required_level"
+                    required
+                >
+
+                    <option value="Beginner"
+                        {% if career_skill.required_level == "Beginner" %}
+                            selected
+                        {% endif %}
+                    >
+                        Beginner
+                    </option>
+
+
+                    <option value="Intermediate"
+                        {% if career_skill.required_level == "Intermediate" %}
+                            selected
+                        {% endif %}
+                    >
+                        Intermediate
+                    </option>
+
+
+                    <option value="Advanced"
+                        {% if career_skill.required_level == "Advanced" %}
+                            selected
+                        {% endif %}
+                    >
+                        Advanced
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="button"
+                >
+                    💾 Save Changes
+                </button>
+
+
+                <a
+                    href="/admin/careers/{{ career.id }}"
+                    class="button cancel"
+                >
+                    ← Cancel
+                </a>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assessment Details - SkillGap Analyzer</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f5f7fb;
+        color: #222;
+    }
+
+    header {
+        background-color: #172554;
+        color: white;
+        padding: 20px 60px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .back {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 900px;
+        margin: 40px auto;
+    }
+
+    .card {
+        background-color: white;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        margin-bottom: 25px;
+    }
+
+    h1 {
+        color: #172554;
+        margin-bottom: 25px;
+    }
+
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        background-color: #f5f7fb;
+
+        padding: 18px;
+
+        border-radius: 10px;
+
+        margin-bottom: 15px;
+    }
+
+    .label {
+        color: #666;
+        font-weight: bold;
+    }
+
+    .value {
+        color: #172554;
+        font-weight: bold;
+    }
+
+    .match {
+        color: #2563eb;
+        font-size: 28px;
+    }
+
+    .button {
+        display: inline-block;
+
+        padding: 14px 25px;
+
+        background-color: #2563eb;
+
+        color: white;
+
+        text-decoration: none;
+
+        border-radius: 8px;
+
+        font-weight: bold;
+
+        margin-top: 10px;
+    }
+
+    .button:hover {
+        background-color: #1d4ed8;
+    }
+
+    @media (max-width: 700px) {
+
+        header {
+            padding: 20px;
+        }
+
+        .container {
+            width: 95%;
+        }
+
+        .item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">
+    SkillGap Analyzer
+</div>
+
+<a href="/history" class="back">
+    ← Back to History
+</a>
+```
+
+</header>
+
+<div class="container">
+
+```
+<div class="card">
+
+    <h1>
+        🎯 Assessment Details
+    </h1>
+
+    <div class="item">
+
+        <span class="label">
+            Career Goal
+        </span>
+
+        <span class="value">
+            {{ result.career_name }}
+        </span>
+
+    </div>
+
+    <div class="item">
+
+        <span class="label">
+            Match Percentage
+        </span>
+
+        <span class="match">
+            {{ result.match_percentage }}%
+        </span>
+
+    </div>
+
+    <div class="item">
+
+        <span class="label">
+            Assessment Date
+        </span>
+
+        <span class="value">
+            {{ result.assessment_date }}
+        </span>
+
+    </div>
+
+    <a href="/history" class="button">
+        ← Back to History
+    </a>
+
+</div>
+```
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>All Assessments - Admin</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f4f7fb;
+        color: #222;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+        background: #172554;
+        color: white;
+
+        padding: 20px 60px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 23px;
+        font-weight: bold;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .admin-name {
+        font-weight: bold;
+    }
+
+    .logout {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .logout:hover {
+        text-decoration: underline;
+    }
+
+    /* ================= CONTAINER ================= */
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+    }
+
+    /* ================= TITLE ================= */
+
+    .title-box {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+        margin-bottom: 30px;
+    }
+
+    .title-box h1 {
+        color: #172554;
+        margin-bottom: 10px;
+    }
+
+    .title-box p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* ================= TABLE ================= */
+
+    .table-box {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background: #172554;
+        color: white;
+        padding: 15px;
+        text-align: left;
+    }
+
+    td {
+        padding: 15px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:hover {
+        background: #f8fafc;
+    }
+
+    /* ================= MATCH ================= */
+
+    .match {
+        font-weight: bold;
+        color: #2563eb;
+    }
+
+    /* ================= EMPTY ================= */
+
+    .empty {
+        background: #f8fafc;
+        padding: 25px;
+        border-radius: 10px;
+        color: #666;
+        text-align: center;
+    }
+
+    /* ================= BUTTON ================= */
+
+    .button {
+        display: inline-block;
+
+        margin-top: 25px;
+
+        padding: 12px 20px;
+
+        background: #2563eb;
+
+        color: white;
+
+        text-decoration: none;
+
+        border-radius: 8px;
+
+        font-weight: bold;
+    }
+
+    .button:hover {
+        background: #1d4ed8;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 700px) {
+
+        header {
+            padding: 20px;
+        }
+
+        .container {
+            width: 95%;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+```
+<div class="logo">
+    🎓 Campus Skill Gap Analyzer
+</div>
+
+<div class="header-right">
+
+    <span class="admin-name">
+        👤 {{ admin_name }}
+    </span>
+
+    <a href="/admin/logout" class="logout">
+        Logout
+    </a>
+
+</div>
+```
+
+</header>
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+```
+<!-- ================= TITLE ================= -->
+
+<div class="title-box">
+
+    <h1>
+        📊 All Assessments
+    </h1>
+
+    <p>
+        View all career assessments completed by
+        registered students.
+    </p>
+
+</div>
+
+
+<!-- ================= ASSESSMENT TABLE ================= -->
+
+<div class="table-box">
+
+    {% if assessments %}
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Student
+                    </th>
+
+                    <th>
+                        Email
+                    </th>
+
+                    <th>
+                        Career
+                    </th>
+
+                    <th>
+                        Match %
+                    </th>
+
+                    <th>
+                        Assessment Date
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for assessment in assessments %}
+
+                <tr>
+
+                    <td>
+                        {{ assessment.id }}
+                    </td>
+
+                    <td>
+                        {{ assessment.student_name }}
+                    </td>
+
+                    <td>
+                        {{ assessment.student_email }}
+                    </td>
+
+                    <td>
+                        {{ assessment.career_name }}
+                    </td>
+
+                    <td class="match">
+                        {{ assessment.match_percentage }}%
+                    </td>
+
+                    <td>
+                        {{ assessment.assessment_date }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    {% else %}
+
+    <div class="empty">
+
+        No assessments have been completed yet.
+
+    </div>
+
+    {% endif %}
+
+
+    <a href="/admin" class="button">
+        ← Back to Admin Dashboard
+    </a>
+
+</div>
+```
+
+</div>
+
+</body>
+
+</html>

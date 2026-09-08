@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Career Skills - Admin</title>
+
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #667eea,
+                #764ba2
+            );
+
+            min-height: 100vh;
+
+            padding: 40px;
+
+        }
+
+
+        /* =================================================
+           MAIN CONTAINER
+        ================================================= */
+
+        .container {
+
+            max-width: 900px;
+
+            margin: auto;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.2);
+
+        }
+
+
+        /* =================================================
+           HEADING
+        ================================================= */
+
+        h1 {
+
+            text-align: center;
+
+            color: #4a3aff;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .career-name {
+
+            text-align: center;
+
+            color: #555;
+
+            font-size: 20px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        /* =================================================
+           BUTTON
+        ================================================= */
+
+        .button {
+
+            display: inline-block;
+
+            padding: 10px 18px;
+
+            background: #4a3aff;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            margin-bottom: 20px;
+
+            transition: 0.3s;
+
+        }
+
+
+        .button:hover {
+
+            background: #3024a8;
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* =================================================
+           TABLE
+        ================================================= */
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 15px;
+
+        }
+
+
+        th {
+
+            background: #4a3aff;
+
+            color: white;
+
+            padding: 14px;
+
+            text-align: left;
+
+        }
+
+
+        td {
+
+            padding: 14px;
+
+            border-bottom: 1px solid #ddd;
+
+            color: #333;
+
+        }
+
+
+        tr:hover {
+
+            background: #f5f5ff;
+
+        }
+
+
+        /* =================================================
+           SKILL LEVEL
+        ================================================= */
+
+        .level {
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background: #e8e5ff;
+
+            color: #4a3aff;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =================================================
+           EDIT BUTTON
+        ================================================= */
+
+        .edit-button {
+
+            background: #ff9800;
+
+            color: white;
+
+            padding: 8px 14px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            display: inline-block;
+
+        }
+
+
+        .edit-button:hover {
+
+            background: #e68900;
+
+        }
+
+
+        /* =================================================
+           DELETE BUTTON
+        ================================================= */
+
+        .delete-button {
+
+            background: #e53935;
+
+            color: white;
+
+            border: none;
+
+            padding: 8px 14px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            margin-left: 6px;
+
+        }
+
+
+        .delete-button:hover {
+
+            background: #c62828;
+
+        }
+
+
+        /* =================================================
+           BACK BUTTON
+        ================================================= */
+
+        .back-button {
+
+            background: #555;
+
+            margin-top: 20px;
+
+        }
+
+
+        .back-button:hover {
+
+            background: #333;
+
+        }
+
+
+        /* =================================================
+           EMPTY MESSAGE
+        ================================================= */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 25px;
+
+            color: #777;
+
+            font-size: 18px;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =================================================
+         PAGE HEADING
+    ================================================= -->
+
+    <h1>
+        🎯 Career Required Skills
+    </h1>
+
+
+    <div class="career-name">
+
+        💼 {{ career.career_name }}
+
+    </div>
+
+
+    <!-- =================================================
+         ADD REQUIRED SKILL
+    ================================================= -->
+
+    <a
+        href="/admin/careers/{{ career.id }}/add-skill"
+        class="button"
+    >
+        ➕ Add Required Skill
+    </a>
+
+
+    <!-- =================================================
+         SKILLS TABLE
+    ================================================= -->
+
+    {% if required_skills %}
+
+
+    <table>
+
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    Skill ID
+                </th>
+
+                <th>
+                    Skill Name
+                </th>
+
+                <th>
+                    Required Level
+                </th>
+
+                <th>
+                    Actions
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+
+            {% for skill in required_skills %}
+
+
+            <tr>
+
+
+                <!-- =====================================
+                     SKILL ID
+                ====================================== -->
+
+                <td>
+
+                    {{ skill.skill_id }}
+
+                </td>
+
+
+                <!-- =====================================
+                     SKILL NAME
+                ====================================== -->
+
+                <td>
+
+                    {{ skill.skill_name }}
+
+                </td>
+
+
+                <!-- =====================================
+                     REQUIRED LEVEL
+                ====================================== -->
+
+                <td>
+
+                    <span class="level">
+
+                        {{ skill.required_level }}
+
+                    </span>
+
+                </td>
+
+
+                <!-- =====================================
+                     ACTIONS
+                ====================================== -->
+
+                <td>
+
+
+                    <!-- EDIT -->
+
+                    <a
+                        href="/admin/careers/{{ career.id }}/edit-skill/{{ skill.skill_id }}"
+                        class="edit-button"
+                    >
+
+                        ✏️ Edit
+
+                    </a>
+
+
+                    <!-- DELETE -->
+
+                    <form
+                        action="/admin/careers/{{ career.id }}/delete-skill/{{ skill.skill_id }}"
+                        method="POST"
+                        style="display:inline;"
+                        onsubmit="return confirm('Are you sure you want to delete this skill?');"
+                    >
+
+                        <button
+                            type="submit"
+                            class="delete-button"
+                        >
+
+                            🗑️ Delete
+
+                        </button>
+
+                    </form>
+
+
+                </td>
+
+
+            </tr>
+
+
+            {% endfor %}
+
+
+        </tbody>
+
+
+    </table>
+
+
+    {% else %}
+
+
+        <div class="empty">
+
+            📭 No required skills have been added
+            to this career yet.
+
+        </div>
+
+
+    {% endif %}
+
+
+    <!-- =================================================
+         BACK TO CAREERS
+    ================================================= -->
+
+    <a
+        href="/admin/careers"
+        class="button back-button"
+    >
+
+        ← Back to Careers
+
+    </a>
+
+
+    <!-- =================================================
+         ADMIN DASHBOARD
+    ================================================= -->
+
+    <a
+        href="/admin"
+        class="button"
+        style="margin-left: 10px;"
+    >
+
+        🏠 Admin Dashboard
+
+    </a>
+
+
+</div>
+
+
+</body>
+
+</html>

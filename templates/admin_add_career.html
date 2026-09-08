@@ -1,0 +1,290 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Career</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+        }
+
+
+        .navbar {
+
+            background: #1e3a8a;
+
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .navbar h1 {
+
+            margin: 0;
+
+            font-size: 24px;
+        }
+
+
+        .navbar a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .container {
+
+            width: 90%;
+
+            max-width: 700px;
+
+            margin: 50px auto;
+        }
+
+
+        .card {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+            color: #1e3a8a;
+
+            text-align: center;
+        }
+
+
+        .description {
+
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 30px;
+        }
+
+
+        label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: #333;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            margin-bottom: 20px;
+        }
+
+
+        input:focus {
+
+            outline: none;
+
+            border-color: #2563eb;
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            font-weight: bold;
+        }
+
+
+        .button:hover {
+
+            background: #1d4ed8;
+        }
+
+
+        .back-button {
+
+            background: #6b7280;
+
+            margin-left: 10px;
+        }
+
+
+        .back-button:hover {
+
+            background: #4b5563;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVIGATION BAR
+    ================================================== -->
+
+    <div class="navbar">
+
+        <h1>⚙️ Admin Panel</h1>
+
+        <div>
+
+            <span>
+                Welcome, {{ admin_name }}
+            </span>
+
+            <a href="/admin">
+                Dashboard
+            </a>
+
+            <a href="/admin/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>
+                ➕ Add New Career
+            </h2>
+
+            <p class="description">
+                Add a new career to the Campus Skill Gap Analyzer.
+            </p>
+
+
+            <!-- =================================================
+                 CAREER FORM
+            ================================================== -->
+
+            <form method="POST"
+                  action="/admin/careers/add">
+
+
+                <label for="career_name">
+                    Career Name
+                </label>
+
+
+                <input
+                    type="text"
+                    id="career_name"
+                    name="career_name"
+                    placeholder="Example: Data Scientist"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="button"
+                >
+                    ➕ Add Career
+                </button>
+
+
+                <a
+                    href="/admin/careers"
+                    class="button back-button"
+                >
+                    ← Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+```

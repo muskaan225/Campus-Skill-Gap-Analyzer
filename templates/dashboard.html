@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .navbar {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .navbar h2 {
+
+            margin: 0;
+
+        }
+
+
+        .navbar a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 18px;
+
+            font-size: 15px;
+
+        }
+
+
+        .navbar a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =================================================
+           MAIN CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: 35px auto;
+
+        }
+
+
+        /* =================================================
+           WELCOME SECTION
+        ================================================= */
+
+        .welcome {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .welcome h1 {
+
+            margin-top: 0;
+
+            color: #1976d2;
+
+        }
+
+
+        .welcome p {
+
+            color: #666;
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =================================================
+           SECTION TITLE
+        ================================================= */
+
+        .section-title {
+
+            color: #333;
+
+            margin-top: 30px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        /* =================================================
+           STAT CARDS
+        ================================================= */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        .stat-card h2 {
+
+            margin: 5px 0;
+
+            color: #1976d2;
+
+            font-size: 32px;
+
+        }
+
+
+        .stat-card p {
+
+            margin: 0;
+
+            color: #666;
+
+        }
+
+
+        /* =================================================
+           TWO COLUMN LAYOUT
+        ================================================= */
+
+        .content-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 25px;
+
+        }
+
+
+        /* =================================================
+           CARDS
+        ================================================= */
+
+        .card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .card h2 {
+
+            margin-top: 0;
+
+            color: #1976d2;
+
+        }
+
+
+        /* =================================================
+           SKILL LIST
+        ================================================= */
+
+        .skill-item {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .skill-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .skill-name {
+
+            font-weight: bold;
+
+        }
+
+
+        .skill-level {
+
+            color: #666;
+
+            font-size: 14px;
+
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 10px;
+
+            background: #e0e0e0;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress {
+
+            height: 100%;
+
+            background: #1976d2;
+
+            border-radius: 10px;
+
+        }
+
+
+        /* =================================================
+           ASSESSMENT CARD
+        ================================================= */
+
+        .assessment-info {
+
+            margin: 12px 0;
+
+        }
+
+
+        .assessment-label {
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        .assessment-value {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #333;
+
+        }
+
+
+        .match {
+
+            font-size: 38px;
+
+            font-weight: bold;
+
+            color: #1976d2;
+
+            text-align: center;
+
+            margin: 20px 0;
+
+        }
+
+
+        /* =================================================
+           EMPTY MESSAGE
+        ================================================= */
+
+        .empty {
+
+            color: #777;
+
+            background: #f5f5f5;
+
+            padding: 15px;
+
+            border-radius: 7px;
+
+        }
+
+
+        /* =================================================
+           BUTTONS
+        ================================================= */
+
+        .buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            padding: 11px 17px;
+
+            background: #1976d2;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            font-size: 14px;
+
+        }
+
+
+        .button:hover {
+
+            background: #0d47a1;
+
+        }
+
+
+        .secondary-button {
+
+            background: #455a64;
+
+        }
+
+
+        .secondary-button:hover {
+
+            background: #263238;
+
+        }
+
+
+        /* =================================================
+           MOBILE RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+
+                flex-direction: column;
+
+                gap: 12px;
+
+                padding: 18px;
+
+            }
+
+
+            .navbar a {
+
+                margin-left: 7px;
+
+                margin-right: 7px;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .content-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .container {
+
+                width: 92%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================= -->
+
+    <div class="navbar">
+
+        <h2>
+            🎓 Skill Gap Analyzer
+        </h2>
+
+
+        <div>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/assessment">
+                Assessment
+            </a>
+
+            <a href="/career">
+                Careers
+            </a>
+
+            <a href="/recommendations">
+                Recommendations
+            </a>
+
+            <a href="/resources">
+                Resources
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTAINER
+    ================================================= -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             WELCOME
+        ================================================= -->
+
+        <div class="welcome">
+
+            <h1>
+
+                👋 Welcome,
+                {{ student_name }}!
+
+            </h1>
+
+
+            <p>
+
+                Track your skills, identify skill gaps,
+                and discover careers that match your
+                abilities.
+
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================= -->
+
+        <h2 class="section-title">
+
+            📊 Your Overview
+
+        </h2>
+
+
+        <div class="stats">
+
+
+            <!-- TOTAL SKILLS -->
+
+            <div class="stat-card">
+
+                <h2>
+                    {{ skills|length }}
+                </h2>
+
+                <p>
+                    Skills Assessed
+                </p>
+
+            </div>
+
+
+            <!-- LATEST MATCH -->
+
+            <div class="stat-card">
+
+                <h2>
+
+                    {% if latest_result %}
+
+                        {{ latest_result.match_percentage }}%
+
+                    {% else %}
+
+                        0%
+
+                    {% endif %}
+
+                </h2>
+
+                <p>
+                    Latest Match
+                </p>
+
+            </div>
+
+
+            <!-- LATEST CAREER -->
+
+            <div class="stat-card">
+
+                <h2>
+
+                    {% if latest_result %}
+
+                        💼
+
+                    {% else %}
+
+                        —
+                        
+                    {% endif %}
+
+                </h2>
+
+                <p>
+
+                    {% if latest_result %}
+
+                        {{ latest_result.career_name }}
+
+                    {% else %}
+
+                        No Assessment Yet
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             CONTENT GRID
+        ================================================= -->
+
+        <div class="content-grid">
+
+
+            <!-- =================================================
+                 MY SKILLS
+            ================================================= -->
+
+            <div class="card">
+
+                <h2>
+                    💻 My Skills
+                </h2>
+
+
+                {% if skills %}
+
+
+                    {% for skill in skills %}
+
+                        <div class="skill-item">
+
+
+                            <div class="skill-header">
+
+                                <span class="skill-name">
+
+                                    {{ skill.skill_name }}
+
+                                </span>
+
+
+                                <span class="skill-level">
+
+                                    {{ skill.proficiency }}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress"
+                                    style="width: {{ skill.percentage }}%;"
+                                >
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    {% endfor %}
+
+
+                {% else %}
+
+                    <div class="empty">
+
+                        You haven't completed your
+                        skill assessment yet.
+
+                    </div>
+
+                {% endif %}
+
+
+            </div>
+
+
+            <!-- =================================================
+                 LATEST ASSESSMENT
+            ================================================= -->
+
+            <div class="card">
+
+                <h2>
+                    🎯 Latest Assessment
+                </h2>
+
+
+                {% if latest_result %}
+
+
+                    <div class="match">
+
+                        {{ latest_result.match_percentage }}%
+
+                    </div>
+
+
+                    <div class="assessment-info">
+
+                        <div class="assessment-label">
+
+                            Career
+
+                        </div>
+
+
+                        <div class="assessment-value">
+
+                            💼
+                            {{ latest_result.career_name }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="assessment-info">
+
+                        <div class="assessment-label">
+
+                            Assessment Date
+
+                        </div>
+
+
+                        <div class="assessment-value">
+
+                            {{ latest_result.assessment_date }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="buttons">
+
+                        <a
+                            href="/career"
+                            class="button"
+                        >
+
+                            🔍 View Skill Gap
+
+                        </a>
+
+
+                        <a
+                            href="/recommendations"
+                            class="button"
+                        >
+
+                            🎯 Recommendations
+
+                        </a>
+
+                    </div>
+
+
+                {% else %}
+
+
+                    <div class="empty">
+
+                        You haven't completed a career
+                        assessment yet.
+
+                    </div>
+
+
+                    <div class="buttons">
+
+                        <a
+                            href="/assessment"
+                            class="button"
+                        >
+
+                            📝 Start Assessment
+
+                        </a>
+
+                    </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             QUICK ACTIONS
+        ================================================= -->
+
+        <div class="card">
+
+            <h2>
+                🚀 Quick Actions
+            </h2>
+
+
+            <div class="buttons">
+
+
+                <a
+                    href="/assessment"
+                    class="button"
+                >
+
+                    📝 Take Assessment
+
+                </a>
+
+
+                <a
+                    href="/career"
+                    class="button"
+                >
+
+                    💼 Analyze Career
+
+                </a>
+
+
+                <a
+                    href="/recommendations"
+                    class="button"
+                >
+
+                    🎯 Career Recommendations
+
+                </a>
+
+
+                <a
+                    href="/resources"
+                    class="button secondary-button"
+                >
+
+                    📚 Learning Resources
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

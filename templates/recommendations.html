@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Career Recommendations</title>
+
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .navbar {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .navbar h2 {
+
+            margin: 0;
+
+        }
+
+
+        .navbar a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 20px;
+
+            font-size: 15px;
+
+        }
+
+
+        .navbar a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =================================================
+           MAIN CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 1000px;
+
+            margin: 40px auto;
+
+        }
+
+
+        /* =================================================
+           PAGE HEADER
+        ================================================= */
+
+        .header {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .header h1 {
+
+            color: #1976d2;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .header p {
+
+            color: #666;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =================================================
+           RECOMMENDATION CARD
+        ================================================= */
+
+        .career-card {
+
+            background: white;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+        }
+
+
+        /* =================================================
+           RANK
+        ================================================= */
+
+        .rank {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+            background: #e3f2fd;
+
+            color: #1976d2;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            flex-shrink: 0;
+
+        }
+
+
+        /* =================================================
+           CAREER INFORMATION
+        ================================================= */
+
+        .career-info {
+
+            flex: 1;
+
+        }
+
+
+        .career-info h2 {
+
+            margin: 0 0 8px;
+
+            color: #333;
+
+        }
+
+
+        .career-info p {
+
+            margin: 5px 0;
+
+            color: #666;
+
+        }
+
+
+        /* =================================================
+           MATCH PERCENTAGE
+        ================================================= */
+
+        .match {
+
+            min-width: 180px;
+
+            text-align: right;
+
+        }
+
+
+        .percentage {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #1976d2;
+
+        }
+
+
+        .match-text {
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =================================================
+           PROGRESS BAR
+        ================================================= */
+
+        .progress-container {
+
+            width: 100%;
+
+            height: 12px;
+
+            background: #e0e0e0;
+
+            border-radius: 10px;
+
+            margin-top: 12px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress-bar {
+
+            height: 100%;
+
+            background: #1976d2;
+
+            border-radius: 10px;
+
+        }
+
+
+        /* =================================================
+           EMPTY MESSAGE
+        ================================================= */
+
+        .empty {
+
+            background: white;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            color: #666;
+
+        }
+
+
+        /* =================================================
+           BUTTONS
+        ================================================= */
+
+        .buttons {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            margin: 5px;
+
+            background: #1976d2;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+        }
+
+
+        .button:hover {
+
+            background: #0d47a1;
+
+        }
+
+
+        .secondary-button {
+
+            background: #455a64;
+
+        }
+
+
+        .secondary-button:hover {
+
+            background: #263238;
+
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                flex-direction: column;
+
+                gap: 10px;
+
+                padding: 15px 20px;
+
+            }
+
+
+            .navbar a {
+
+                margin-left: 8px;
+
+                margin-right: 8px;
+
+            }
+
+
+            .career-card {
+
+                flex-direction: column;
+
+                text-align: center;
+
+            }
+
+
+            .match {
+
+                width: 100%;
+
+                text-align: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================= -->
+
+    <div class="navbar">
+
+        <h2>
+            🎓 Skill Gap Analyzer
+        </h2>
+
+
+        <div>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/assessment">
+                Assessment
+            </a>
+
+            <a href="/career">
+                Careers
+            </a>
+
+            <a href="/recommendations">
+                Recommendations
+            </a>
+
+            <a href="/resources">
+                Resources
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================= -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================= -->
+
+        <div class="header">
+
+            <h1>
+                🎯 Career Recommendations
+            </h1>
+
+
+            <p>
+
+                Based on your current skills,
+                these careers are your best matches.
+
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             CAREER RECOMMENDATIONS
+        ================================================= -->
+
+        {% if recommendations %}
+
+
+            {% for career in recommendations %}
+
+                <div class="career-card">
+
+
+                    <!-- RANK -->
+
+                    <div class="rank">
+
+                        {{ loop.index }}
+
+                    </div>
+
+
+                    <!-- CAREER INFORMATION -->
+
+                    <div class="career-info">
+
+                        <h2>
+
+                            💼 {{ career.career_name }}
+
+                        </h2>
+
+
+                        <p>
+
+                            ✅
+
+                            {{ career.matched_count }}
+
+                            of
+
+                            {{ career.total_required }}
+
+                            required skills matched
+
+                        </p>
+
+
+                        <!-- PROGRESS BAR -->
+
+                        <div class="progress-container">
+
+                            <div
+                                class="progress-bar"
+                                style="width: {{ career.match_percentage }}%;"
+                            >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MATCH PERCENTAGE -->
+
+                    <div class="match">
+
+                        <div class="percentage">
+
+                            {{ career.match_percentage }}%
+
+                        </div>
+
+
+                        <div class="match-text">
+
+                            Skill Match
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <div class="empty">
+
+                <h2>
+                    No Career Recommendations Yet
+                </h2>
+
+
+                <p>
+
+                    Complete your skill assessment
+                    to get career recommendations.
+
+                </p>
+
+            </div>
+
+
+        {% endif %}
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+        ================================================= -->
+
+        <div class="buttons">
+
+            <a
+                href="/assessment"
+                class="button"
+            >
+
+                📝 Update Skills
+
+            </a>
+
+
+            <a
+                href="/career"
+                class="button"
+            >
+
+                🎯 Analyze a Career
+
+            </a>
+
+
+            <a
+                href="/resources"
+                class="button secondary-button"
+            >
+
+                📚 Learning Resources
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

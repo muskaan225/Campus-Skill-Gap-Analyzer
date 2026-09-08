@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Gap Results</title>
+
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f7fb;
+
+            color: #333;
+
+        }
+
+
+        /* =================================================
+           NAVBAR
+        ================================================= */
+
+        .navbar {
+
+            background: #1976d2;
+
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .navbar h2 {
+
+            margin: 0;
+
+        }
+
+
+        .navbar a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 20px;
+
+            font-size: 15px;
+
+        }
+
+
+        .navbar a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =================================================
+           MAIN CONTAINER
+        ================================================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 900px;
+
+            margin: 40px auto;
+
+        }
+
+
+        /* =================================================
+           HEADER CARD
+        ================================================= */
+
+        .header-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.10);
+
+        }
+
+
+        .header-card h1 {
+
+            margin-top: 0;
+
+            color: #1976d2;
+
+        }
+
+
+        .career-name {
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            margin-top: 10px;
+
+        }
+
+
+        /* =================================================
+           MATCH PERCENTAGE
+        ================================================= */
+
+        .percentage {
+
+            font-size: 52px;
+
+            font-weight: bold;
+
+            color: #1976d2;
+
+            margin: 20px 0 5px;
+
+        }
+
+
+        .percentage-text {
+
+            color: #666;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =================================================
+           PROGRESS BAR
+        ================================================= */
+
+        .progress-container {
+
+            width: 100%;
+
+            height: 25px;
+
+            background: #e0e0e0;
+
+            border-radius: 20px;
+
+            margin-top: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress-bar {
+
+            height: 100%;
+
+            width: {{ match_percentage }}%;
+
+            background: #1976d2;
+
+            border-radius: 20px;
+
+            transition: width 0.5s ease;
+
+        }
+
+
+        /* =================================================
+           SKILL SECTIONS
+        ================================================= */
+
+        .skills-container {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 25px;
+
+            margin-top: 25px;
+
+        }
+
+
+        .skill-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        .skill-card h2 {
+
+            margin-top: 0;
+
+        }
+
+
+        .matched-title {
+
+            color: #2e7d32;
+
+        }
+
+
+        .missing-title {
+
+            color: #c62828;
+
+        }
+
+
+        /* =================================================
+           SKILL LIST
+        ================================================= */
+
+        .skill-list {
+
+            padding: 0;
+
+            margin: 15px 0 0;
+
+            list-style: none;
+
+        }
+
+
+        .skill-list li {
+
+            padding: 12px;
+
+            margin-bottom: 8px;
+
+            border-radius: 6px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .matched-list li {
+
+            background: #e8f5e9;
+
+            border-left:
+                4px solid #2e7d32;
+
+        }
+
+
+        .missing-list li {
+
+            background: #ffebee;
+
+            border-left:
+                4px solid #c62828;
+
+        }
+
+
+        .empty-message {
+
+            color: #777;
+
+            padding: 10px 0;
+
+        }
+
+
+        /* =================================================
+           BUTTONS
+        ================================================= */
+
+        .buttons {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            margin: 5px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            background: #1976d2;
+
+            color: white;
+
+        }
+
+
+        .button:hover {
+
+            background: #0d47a1;
+
+        }
+
+
+        .secondary-button {
+
+            background: #455a64;
+
+        }
+
+
+        .secondary-button:hover {
+
+            background: #263238;
+
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                padding: 15px 20px;
+
+                flex-direction: column;
+
+                gap: 10px;
+
+            }
+
+
+            .navbar a {
+
+                margin-left: 8px;
+
+                margin-right: 8px;
+
+            }
+
+
+            .skills-container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .percentage {
+
+                font-size: 42px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         NAVBAR
+    ================================================= -->
+
+    <div class="navbar">
+
+        <h2>
+            🎓 Skill Gap Analyzer
+        </h2>
+
+
+        <div>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/assessment">
+                Assessment
+            </a>
+
+            <a href="/career">
+                Careers
+            </a>
+
+            <a href="/recommendations">
+                Recommendations
+            </a>
+
+            <a href="/resources">
+                Resources
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================= -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+             RESULT HEADER
+        ================================================= -->
+
+        <div class="header-card">
+
+            <h1>
+                📊 Skill Gap Analysis Result
+            </h1>
+
+
+            <div class="career-name">
+
+                🎯 {{ career }}
+
+            </div>
+
+
+            <div class="percentage">
+
+                {{ match_percentage }}%
+
+            </div>
+
+
+            <div class="percentage-text">
+
+                Career Skill Match
+
+            </div>
+
+
+            <!-- Progress Bar -->
+
+            <div class="progress-container">
+
+                <div class="progress-bar"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MATCHED + MISSING SKILLS
+        ================================================= -->
+
+        <div class="skills-container">
+
+
+            <!-- =================================================
+                 MATCHED SKILLS
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h2 class="matched-title">
+
+                    ✅ Matched Skills
+
+                </h2>
+
+
+                {% if matched_skills %}
+
+                    <ul class="skill-list matched-list">
+
+                        {% for skill in matched_skills %}
+
+                            <li>
+
+                                {{ skill }}
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                {% else %}
+
+                    <div class="empty-message">
+
+                        No required skills have been
+                        matched yet.
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- =================================================
+                 MISSING SKILLS
+            ================================================= -->
+
+            <div class="skill-card">
+
+                <h2 class="missing-title">
+
+                    ❌ Skill Gaps
+
+                </h2>
+
+
+                {% if missing_skills %}
+
+                    <ul class="skill-list missing-list">
+
+                        {% for skill in missing_skills %}
+
+                            <li>
+
+                                {{ skill }}
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                {% else %}
+
+                    <div class="empty-message">
+
+                        🎉 You currently meet all the
+                        required skill levels!
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+        ================================================= -->
+
+        <div class="buttons">
+
+            <a
+                href="/career"
+                class="button"
+            >
+
+                🔄 Analyze Another Career
+
+            </a>
+
+
+            <a
+                href="/recommendations"
+                class="button"
+            >
+
+                🎯 Career Recommendations
+
+            </a>
+
+
+            <a
+                href="/resources"
+                class="button secondary-button"
+            >
+
+                📚 Learning Resources
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
