@@ -33,23 +33,39 @@ app.secret_key = "campus-skill-gap-secret"
 
 import os
 
-
 def get_db_connection():
 
-    return mysql.connector.connect(
+    if os.environ.get("MYSQLHOST"):
 
-        host=os.environ.get("DB_HOST"),
+        return mysql.connector.connect(
 
-        user=os.environ.get("DB_USER"),
+            host=os.environ.get("MYSQLHOST"),
 
-        password=os.environ.get("DB_PASSWORD"),
+            user=os.environ.get("MYSQLUSER"),
 
-        database=os.environ.get("DB_NAME"),
+            password=os.environ.get("MYSQLPASSWORD"),
 
-        port=int(os.environ.get("DB_PORT", 3306))
+            database=os.environ.get("MYSQLDATABASE"),
 
-    )
+            port=int(os.environ.get("MYSQLPORT", 3306))
 
+        )
+
+    else:
+
+        return mysql.connector.connect(
+
+            host="localhost",
+
+            user="root",
+
+            password=os.environ.get("DB_PASSWORD"),
+
+            database="campus_skill_gap",
+
+            port=3306
+
+        )
 
 # =========================================================
 # HOME PAGE
