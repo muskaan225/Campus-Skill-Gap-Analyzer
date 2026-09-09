@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .env
 .DS_Store
+
+app.py.save
+campus_skill_gap_backup.sql
