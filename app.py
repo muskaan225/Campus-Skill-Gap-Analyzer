@@ -1259,6 +1259,83 @@ def resources():
 
     )
 
+# =========================================================
+# ADMIN REGISTER
+# =========================================================
+
+@app.route(
+    "/admin/register",
+    methods=["GET", "POST"]
+)
+def admin_register():
+
+    if request.method == "POST":
+
+        name = request.form.get("name")
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        # Check required fields
+        if not name or not email or not password:
+            return "All fields are required."
+
+        connection = get_db_connection()
+
+        cursor = connection.cursor()
+
+        # Check whether email already exists
+        cursor.execute(
+            """
+            SELECT id
+            FROM admins
+            WHERE email = %s
+            """,
+            (email,)
+        )
+
+        existing_admin = cursor.fetchone()
+
+        if existing_admin:
+
+            cursor.close()
+            connection.close()
+
+            return "Admin email already registered."
+
+        # Create new admin
+        cursor.execute(
+            """
+            INSERT INTO admins
+            (
+                name,
+                email,
+                password
+            )
+            VALUES
+            (
+                %s,
+                %s,
+                %s
+            )
+            """,
+            (
+                name,
+                email,
+                password
+            )
+        )
+
+        connection.commit()
+
+        cursor.close()
+        connection.close()
+
+        # After registration, go to admin login
+        return redirect("/admin/login")
+
+    return render_template(
+        "admin_register.html"
+    )
 
 # =========================================================
 # ADMIN LOGIN
